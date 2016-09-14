@@ -15,7 +15,7 @@ THEANO_FLAGS='allow_gc=False,device=gpu,floatX=float32' python experiment.py
 
 I updated the scripts to run with the latest version of Keras. I also added a new experiment using 10x training epochs compared to the original paper (which gives a drastic improvement both in terms of RMSE and test log-likelihood). These are under `experiment_10x_epochs.py`.
 
-Updated results (compared to the original paper):
+## Updated results (compared to the original paper):
 
 Dataset | Dropout RMSE (original) | Dropout RMSE (updated) | Dropout Test LL (original) | Dropout Test LL (updated)
 --- | :---: | :---: | :---: | :---:
