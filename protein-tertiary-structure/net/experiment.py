@@ -1,5 +1,5 @@
 # Copyright 2016, Yarin Gal, All rights reserved.
-# This code is based on the code by José Miguel Hernández-Lobato used for his 
+# This code is based on the code by Jose Miguel Hernandez-Lobato used for his 
 # paper "Probabilistic Backpropagation for Scalable Learning of Bayesian Neural Networks".
 
 # This experiment uses the optimal model precision tau obtained from experiment_BO.py and 

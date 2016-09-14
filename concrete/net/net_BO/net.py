@@ -1,5 +1,5 @@
 # Copyright 2016, Yarin Gal, All rights reserved.
-# This code is based on the code by José Miguel Hernández-Lobato used for his 
+# This code is based on the code by Jose Miguel Hernandez-Lobato used for his 
 # paper "Probabilistic Backpropagation for Scalable Learning of Bayesian Neural Networks".
 
 import warnings
@@ -74,8 +74,8 @@ class net:
         N = X_train.shape[0]
         dropout = 0.01
         batch_size = 32
-        lengthscale = 1e2
-        reg = lambda: l2((1 - dropout) / (2. * N * lengthscale**2 * tau))
+        lengthscale = 1e-2
+        reg = lambda: l2(lengthscale**2 * (1 - dropout) / (2. * N * tau))
 
         model = Sequential()
         model.add(Dropout(dropout))

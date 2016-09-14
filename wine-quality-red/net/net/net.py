@@ -1,5 +1,5 @@
 # Copyright 2016, Yarin Gal, All rights reserved.
-# This code is based on the code by José Miguel Hernández-Lobato used for his 
+# This code is based on the code by Jose Miguel Hernandez-Lobato used for his 
 # paper "Probabilistic Backpropagation for Scalable Learning of Bayesian Neural Networks".
 
 import warnings
@@ -15,13 +15,13 @@ import pylab
 # %matplotlib notebook
 
 import theano
+from keras import backend as K
 from keras.models import Sequential
 from keras.callbacks import Callback
 from keras.layers.core import Dense, Dropout, Activation
 from keras.optimizers import SGD
 from keras.regularizers import l2
 import keras.constraints as constraints
-from keras.callbacks import ModelTest, LearningRateScheduler
 
 import time
 
@@ -73,41 +73,25 @@ class net:
         # We construct the network
         N = X_train.shape[0]
         dropout = 0.05
-        batch_size = 32
+        batch_size = 128
         tau = 2.95833720839 # obtained from BO
-        lengthscale = 1e2
-        reg = lambda: l2((1 - dropout) / (2. * N * lengthscale**2 * tau))
+        lengthscale = 1e-2
+        reg = lengthscale**2 * (1 - dropout) / (2. * N * tau)
 
         model = Sequential()
-        model.add(Dropout(dropout))
-        model.add(Dense(X_train.shape[1], n_hidden[0], W_regularizer = reg()))
-        model.add(Activation('relu'))
+        model.add(Dropout(dropout, input_shape=(X_train.shape[1],)))
+        model.add(Dense(n_hidden[0], activation='relu', W_regularizer=l2(reg)))
         for i in xrange(len(n_hidden) - 1):
             model.add(Dropout(dropout))
-            model.add(Dense(n_hidden[i], n_hidden[i+1], W_regularizer = reg()))
-            model.add(Activation('relu'))
+            model.add(Dense(n_hidden[i+1], activation='relu', W_regularizer=l2(reg)))
         model.add(Dropout(dropout))
-        model.add(Dense(n_hidden[-1], y_train_normalized.shape[1], W_regularizer = reg()))
+        model.add(Dense(y_train_normalized.shape[1], W_regularizer=l2(reg)))
 
-        # In Keras we have:
-        # lr = self.lr * (1.0 / (1.0 + self.decay * self.iterations))
-        # for SGD
-        # optimiser = SGD(lr=lr, decay=SGD_decay, momentum=0.9, nesterov=False) 
-        optimiser = 'adam'
-        model.compile(loss='mean_squared_error', optimizer=optimiser)
+        model.compile(loss='mean_squared_error', optimizer='adam')
 
         # We iterate the learning process
         start_time = time.time()
-        X_test = np.array(X_test, ndmin = 2)
-        y_test = np.array(y_test, ndmin = 2).T
-        X_test = (X_test - np.full(X_test.shape, self.mean_X_train)) / \
-            np.full(X_test.shape, self.std_X_train)
-        modeltest = ModelTest(X_test, y_test, test_every_X_epochs=500, verbose=0, T=10, 
-            loss='euclidean', mean_y_train=self.mean_y_train, std_y_train=self.std_y_train, tau=tau)
-        # this doesn't seem to reduce error variance:
-        # scheduler = LearningRateScheduler(lambda epoch: 0.005 / (epoch+1)**0.5)
-        model.fit(X_train, y_train_normalized, batch_size=batch_size, nb_epoch=n_epochs, verbose=1) #, 
-            # callbacks=[modeltest]) #scheduler, 
+        model.fit(X_train, y_train_normalized, batch_size=batch_size, nb_epoch=n_epochs, verbose=0)
         self.model = model
         self.tau = tau
         self.running_time = time.time() - start_time
@@ -143,14 +127,15 @@ class net:
         model = self.model
         standard_pred = model.predict(X_test, batch_size=500, verbose=1)
         standard_pred = standard_pred * self.std_y_train + self.mean_y_train
-        rmse_standard_pred = np.mean((y_test - standard_pred)**2.)**0.5
+        rmse_standard_pred = np.mean((y_test.squeeze() - standard_pred.squeeze())**2.)**0.5
 
         T = 10000
+        predict_stochastic = K.function([model.layers[0].input, K.learning_phase()], model.layers[-1].output)
 
-        Yt_hat = np.array([model.predict_stochastic(X_test, batch_size=500, verbose=0) for _ in xrange(T)])
+        Yt_hat = np.array([predict_stochastic([X_test, 1]) for _ in xrange(T)])
         Yt_hat = Yt_hat * self.std_y_train + self.mean_y_train
         MC_pred = np.mean(Yt_hat, 0)
-        rmse = np.mean((y_test - MC_pred)**2.)**0.5
+        rmse = np.mean((y_test.squeeze() - MC_pred.squeeze())**2.)**0.5
 
         # We compute the test log-likelihood
         ll = (logsumexp(-0.5 * self.tau * (y_test[None] - Yt_hat)**2., 0) - np.log(T) 
