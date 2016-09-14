@@ -1,0 +1,5 @@
+Best result: 2.116958
+Job-id: 20015
+Parameters: 
+name: "tau"
+dbl_val: 0.541869562034
