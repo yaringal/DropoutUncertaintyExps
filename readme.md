@@ -4,6 +4,6 @@ These experiments use Spearmint, obtained from here: [https://github.com/JasperS
 To run an experiment:
 
 ```
-./cleanup /scratch/home/Dropbox/Python/DropoutUncertainty/energy/net_new/
+./cleanup path-to-exp
 THEANO_FLAGS='allow_gc=False,device=gpu,floatX=float32' ./spearmint path-to-exp/config.pb --driver=local --method=GPEIOptChooser --max-concurrent=1 --max-finished-jobs=30
 ```
