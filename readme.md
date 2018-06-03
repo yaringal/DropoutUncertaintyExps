@@ -3,7 +3,7 @@ This is the code used for the uncertainty experiments in the paper ["Dropout as 
 To run an experiment:
 
 ```
-THEANO_FLAGS='allow_gc=False,device=gpu,floatX=float32' python experiment.py
+THEANO_FLAGS='allow_gc=False,device=gpu,floatX=float32' python experiment.py --dir <UCI Dataset directory> --epochx <Epoch multiplier> --hidden <number of hidden layers>
 ```
 
 I updated the scripts to run with the latest version of Keras. I also added two new experiments: 
