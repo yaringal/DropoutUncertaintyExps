@@ -11,7 +11,7 @@ parser=argparse.ArgumentParser()
 
 parser.add_argument('--dir', '-d', required=True, help='Name of the UCI Dataset directory. Eg: bostonHousing')
 parser.add_argument('--epochx','-e', default=500, type=int, help='Multiplier for the number of epochs for training.')
-parser.add_argument('--hidden', '-h', default=2, type=int, help='Number of hidden layers for the neural net')
+parser.add_argument('--hidden', '-nh', default=2, type=int, help='Number of hidden layers for the neural net')
 
 args=parser.parse_args()
 
@@ -28,16 +28,16 @@ import net
 from subprocess import call
 
 
-_RESULTS_VALIDATION_LL = "/UCI_Datasets/" + data_directory + "/results/validation_ll_" + str(n_epochs) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
-_RESULTS_VALIDATION_RMSE = "/UCI_Datasets/" + data_directory + "/results/validation_rmse_" + str(n_epochs) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
-_RESULTS_VALIDATION_MC_RMSE = "/UCI_Datasets/" + data_directory + "/results/validation_MC_rmse_" + str(n_epochs) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
+_RESULTS_VALIDATION_LL = "./UCI_Datasets/" + data_directory + "/results/validation_ll_" + str(epochs_multiplier) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
+_RESULTS_VALIDATION_RMSE = "./UCI_Datasets/" + data_directory + "/results/validation_rmse_" + str(epochs_multiplier) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
+_RESULTS_VALIDATION_MC_RMSE = "./UCI_Datasets/" + data_directory + "/results/validation_MC_rmse_" + str(epochs_multiplier) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
 
-_RESULTS_TEST_LL = "/UCI_Datasets/" + data_directory + "/results/test_ll_" + str(n_epochs) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
-_RESULTS_TEST_RMSE = "/UCI_Datasets/" + data_directory + "/results/test_rmse_" + str(n_epochs) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
-_RESULTS_TEST_MC_RMSE = "/UCI_Datasets/" + data_directory + "/results/test_MC_rmse_" + str(n_epochs) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
-_RESULTS_TEST_LOG = "/UCI_Datasets/" + data_directory + "/results/log_" + str(n_epochs) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
+_RESULTS_TEST_LL = "./UCI_Datasets/" + data_directory + "/results/test_ll_" + str(epochs_multiplier) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
+_RESULTS_TEST_RMSE = "./UCI_Datasets/" + data_directory + "/results/test_rmse_" + str(epochs_multiplier) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
+_RESULTS_TEST_MC_RMSE = "./UCI_Datasets/" + data_directory + "/results/test_MC_rmse_" + str(epochs_multiplier) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
+_RESULTS_TEST_LOG = "./UCI_Datasets/" + data_directory + "/results/log_" + str(epochs_multiplier) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
 
-_DATA_DIRECTORY_PATH = "/UCI_Datasets/" + data_directory + "/data/"
+_DATA_DIRECTORY_PATH = "./UCI_Datasets/" + data_directory + "/data/"
 _DROPOUT_RATES_FILE = _DATA_DIRECTORY_PATH + "dropout_rates.txt"
 _TAU_VALUES_FILE = _DATA_DIRECTORY_PATH + "tau_values.txt"
 _DATA_FILE = _DATA_DIRECTORY_PATH + "data.txt"
@@ -134,10 +134,13 @@ for i in range(n_splits):
     best_tau = 0
     best_dropout = 0
     for dropout_rate in dropout_rates:
+        print (type(dropout_rate))
         for tau in tau_values:
-            print ('Cross validation step: Tau: ' + tau + ' Dropout rate: ' + dropout_rate)
-            network = net.net(X_train, y_train,
-                ([ int(n_hidden) ] * num_hidden_layers), normalize = True, n_epochs = int(n_epochs*100), tau = tau,
+            dropout_rate = np.asscalar(dropout_rate)
+            tau = np.asscalar(tau)
+            print ('Cross validation step: Tau: ' + str(tau) + ' Dropout rate: ' + str(dropout_rate))
+            network = net.net(X_train, y_train, ([ int(n_hidden) ] * num_hidden_layers),
+                normalize = True, n_epochs = int(n_epochs * epochs_multiplier), tau = tau,
                 dropout = dropout_rate)
 
             # We obtain the test RMSE and the test ll from the validation sets
@@ -173,7 +176,7 @@ for i in range(n_splits):
     with open(_RESULTS_TEST_LL, "a") as myfile:
         myfile.write(repr(ll) + '\n')
 
-    print ("Tests on split " + i " complete.")
+    print ("Tests on split " + str(i) + " complete.")
     errors += [error]
     MC_errors += [MC_error]
     lls += [ll]
