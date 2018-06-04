@@ -134,9 +134,8 @@ for i in range(n_splits):
     best_tau = 0
     best_dropout = 0
     for dropout_rate in dropout_rates:
-        print (type(dropout_rate))
+        dropout_rate = np.asscalar(dropout_rate)
         for tau in tau_values:
-            dropout_rate = np.asscalar(dropout_rate)
             tau = np.asscalar(tau)
             print ('Cross validation step: Tau: ' + str(tau) + ' Dropout rate: ' + str(dropout_rate))
             network = net.net(X_train, y_train, ([ int(n_hidden) ] * num_hidden_layers),
