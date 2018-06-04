@@ -105,12 +105,13 @@ n_splits = np.loadtxt(_N_SPLITS_FILE)
 print ("Done.")
 
 errors, MC_errors, lls = [], [], []
-for i in range(n_splits):
+for split in range(n_splits):
 
     # We load the indexes of the training and test sets
-
-    index_train = np.loadtxt(_get_index_train_test_path(i, train=True))
-    index_test = np.loadtxt(_get_index_train_test_path(i, train=False))
+    print ('Loading file: ' + _get_index_train_test_path(split, train=True))
+    print ('Loading file: ' + _get_index_train_test_path(split, train=False))
+    index_train = np.loadtxt(_get_index_train_test_path(split, train=True))
+    index_test = np.loadtxt(_get_index_train_test_path(split, train=False))
 
     X_train = X[ [int(i) for i in index_train.tolist()] ]
     y_train = y[ [int(i) for i in index_train.tolist()] ]
@@ -175,7 +176,7 @@ for i in range(n_splits):
     with open(_RESULTS_TEST_LL, "a") as myfile:
         myfile.write(repr(ll) + '\n')
 
-    print ("Tests on split " + str(i) + " complete.")
+    print ("Tests on split " + str(split) + " complete.")
     errors += [error]
     MC_errors += [MC_error]
     lls += [ll]
