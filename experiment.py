@@ -33,6 +33,7 @@ _RESULTS_VALIDATION_RMSE = "./UCI_Datasets/" + data_directory + "/results/valida
 _RESULTS_VALIDATION_MC_RMSE = "./UCI_Datasets/" + data_directory + "/results/validation_MC_rmse_" + str(epochs_multiplier) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
 
 _RESULTS_TEST_LL = "./UCI_Datasets/" + data_directory + "/results/test_ll_" + str(epochs_multiplier) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
+_RESULTS_TEST_TAU = "./UCI_Datasets/" + data_directory + "/results/test_tau_" + str(epochs_multiplier) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
 _RESULTS_TEST_RMSE = "./UCI_Datasets/" + data_directory + "/results/test_rmse_" + str(epochs_multiplier) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
 _RESULTS_TEST_MC_RMSE = "./UCI_Datasets/" + data_directory + "/results/test_MC_rmse_" + str(epochs_multiplier) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
 _RESULTS_TEST_LOG = "./UCI_Datasets/" + data_directory + "/results/log_" + str(epochs_multiplier) + "_xepochs_" + str(num_hidden_layers) + "_hidden_layers.txt"
@@ -69,6 +70,7 @@ call(["rm", _RESULTS_VALIDATION_LL])
 call(["rm", _RESULTS_VALIDATION_RMSE])
 call(["rm", _RESULTS_VALIDATION_MC_RMSE])
 call(["rm", _RESULTS_TEST_LL])
+call(["rm", _RESULTS_TEST_TAU])
 call(["rm", _RESULTS_TEST_RMSE])
 call(["rm", _RESULTS_TEST_MC_RMSE])
 call(["rm", _RESULTS_TEST_LOG])
@@ -119,11 +121,19 @@ for split in range(n_splits):
     X_test = X[ [int(i) for i in index_test.tolist()] ]
     y_test = y[ [int(i) for i in index_test.tolist()] ]
 
+    X_train_original = X_train
+    y_train_original = y_train
     num_training_examples = int(0.8 * X_train.shape[0])
     X_validation = X_train[num_training_examples:, :]
     y_validation = y_train[num_training_examples:]
     X_train = X_train[0:num_training_examples, :]
     y_train = y_train[0:num_training_examples]
+    
+    # Printing the size of the training, validation and test sets
+    print ('Number of training examples: ' + str(X_train.shape[0]))
+    print ('Number of validation examples: ' + str(X_validation.shape[0]))
+    print ('Number of test examples: ' + str(X_test.shape[0]))
+    print ('Number of train_original examples: ' + str(X_train_original.shape[0]))
 
     # List of hyperparameters which we will try out using grid-search
     dropout_rates = np.loadtxt(_DROPOUT_RATES_FILE)
@@ -151,6 +161,9 @@ for split in range(n_splits):
                 best_network = network
                 best_tau = tau
                 best_dropout = dropout_rate
+                print ('Best log_likelihood changed to: ' + str(best_ll))
+                print ('Best tau changed to: ' + str(best_tau))
+                print ('Best dropout rate changed to: ' + str(best_dropout))
             
             # Storing validation results
             with open(_RESULTS_VALIDATION_RMSE, "a") as myfile:
@@ -166,6 +179,9 @@ for split in range(n_splits):
                 myfile.write(repr(ll) + '\n')
 
     # Storing test results
+    best_network = net.net(X_train_original, y_train_original, ([ int(n_hidden) ] * num_hidden_layers),
+                normalize = True, n_epochs = int(n_epochs * epochs_multiplier), tau = best_tau,
+                dropout = best_dropout)
     error, MC_error, ll = best_network.predict(X_test, y_test)
     with open(_RESULTS_TEST_RMSE, "a") as myfile:
         myfile.write(repr(error) + '\n')
@@ -175,6 +191,9 @@ for split in range(n_splits):
 
     with open(_RESULTS_TEST_LL, "a") as myfile:
         myfile.write(repr(ll) + '\n')
+
+    with open(_RESULTS_TEST_TAU, "a") as myfile:
+        myfile.write(repr(best_network.tau) + '\n')
 
     print ("Tests on split " + str(split) + " complete.")
     errors += [error]
@@ -188,4 +207,3 @@ with open(_RESULTS_TEST_LOG, "a") as myfile:
         np.percentile(MC_errors, 50), np.percentile(MC_errors, 25), np.percentile(MC_errors, 75)))
     myfile.write('lls %f +- %f, median %f 25p %f 75p %f \n' % (np.mean(lls), np.std(lls), 
         np.percentile(lls, 50), np.percentile(lls, 25), np.percentile(lls, 75)))
-    myfile.write('tau %f \n' % (best_network.tau))
