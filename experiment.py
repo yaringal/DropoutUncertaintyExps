@@ -136,8 +136,8 @@ for split in range(n_splits):
     print ('Number of train_original examples: ' + str(X_train_original.shape[0]))
 
     # List of hyperparameters which we will try out using grid-search
-    dropout_rates = np.loadtxt(_DROPOUT_RATES_FILE)
-    tau_values = np.loadtxt(_TAU_VALUES_FILE)
+    dropout_rates = [np.loadtxt(_DROPOUT_RATES_FILE).tolist()]
+    tau_values = [np.loadtxt(_TAU_VALUES_FILE).tolist()]
 
     # We perform grid-search to select the best hyperparameters based on the highest log-likelihood value
     best_network = None
