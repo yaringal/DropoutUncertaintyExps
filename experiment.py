@@ -48,6 +48,8 @@ _INDEX_FEATURES_FILE = _DATA_DIRECTORY_PATH + "index_features.txt"
 _INDEX_TARGET_FILE = _DATA_DIRECTORY_PATH + "index_target.txt"
 _N_SPLITS_FILE = _DATA_DIRECTORY_PATH + "n_splits.txt"
 
+_NETS_IN_TEST_ENSEMBLE = 10
+_NETS_IN_VALIDATION_ENSEMBLE = 5
 
 def _get_index_train_test_path(split_num, train = True):
     """
@@ -63,6 +65,38 @@ def _get_index_train_test_path(split_num, train = True):
         return _DATA_DIRECTORY_PATH + "index_train_" + str(split_num) + ".txt"
     else:
         return _DATA_DIRECTORY_PATH + "index_test_" + str(split_num) + ".txt" 
+
+
+def _get_ensemble_prediction(best_networks, X_test, y_test):
+    """
+       Method to take a list of networks and compute their mean performance over a given
+       test set.
+
+       @param best_networks   List of networks trained on the same data with the same
+                              parameters.
+       @param X_test          Features for the test set
+       @param y_test          Targets for the test set
+ 
+       @return error          Average standard RMSE over all trained networks
+       @return mc_error       Average Monte-Carlo RMSE over all trained networks
+       @return ll             Average log likelihood over all trained networks
+    """
+
+    errors, mc_errors, lls = [], [], []
+    
+    for network in best_networks:
+        error, mc_error, ll = network.predict(X_test, y_test)
+        errors.append(error)
+        mc_errors.append(mc_error)
+        lls.append(ll)
+    
+    res_error = sum(errors)/len(errors)
+    res_mc_error = sum(mc_errors)/len(mc_errors)
+    res_ll = sum(lls)/len(lls)
+    print ('Avg error: ' + str(res_error))
+    print ('Avg MC error: ' + str(res_mc_error))
+    print ('Avg LL: ' + str(res_ll))
+    return res_error, res_mc_error, res_ll
 
 
 print ("Removing existing result files...")
@@ -107,7 +141,7 @@ n_splits = np.loadtxt(_N_SPLITS_FILE)
 print ("Done.")
 
 errors, MC_errors, lls = [], [], []
-for split in range(n_splits):
+for split in range(int(n_splits)):
 
     # We load the indexes of the training and test sets
     print ('Loading file: ' + _get_index_train_test_path(split, train=True))
@@ -136,8 +170,8 @@ for split in range(n_splits):
     print ('Number of train_original examples: ' + str(X_train_original.shape[0]))
 
     # List of hyperparameters which we will try out using grid-search
-    dropout_rates = [np.loadtxt(_DROPOUT_RATES_FILE).tolist()]
-    tau_values = [np.loadtxt(_TAU_VALUES_FILE).tolist()]
+    dropout_rates = np.loadtxt(_DROPOUT_RATES_FILE).tolist()
+    tau_values = np.loadtxt(_TAU_VALUES_FILE).tolist()
 
     # We perform grid-search to select the best hyperparameters based on the highest log-likelihood value
     best_network = None
@@ -145,17 +179,19 @@ for split in range(n_splits):
     best_tau = 0
     best_dropout = 0
     for dropout_rate in dropout_rates:
-        dropout_rate = np.asscalar(dropout_rate)
         for tau in tau_values:
-            tau = np.asscalar(tau)
-            print ('Cross validation step: Tau: ' + str(tau) + ' Dropout rate: ' + str(dropout_rate))
-            network = net.net(X_train, y_train, ([ int(n_hidden) ] * num_hidden_layers),
-                normalize = True, n_epochs = int(n_epochs * epochs_multiplier), tau = tau,
-                dropout = dropout_rate)
+            print ('Grid search step: Tau: ' + str(tau) + ' Dropout rate: ' + str(dropout_rate))
+            validation_networks = []
+            for b in range(_NETS_IN_VALIDATION_ENSEMBLE):
+                network = net.net(X_train, y_train, ([ int(n_hidden) ] * num_hidden_layers),
+                        normalize = True, n_epochs = int(n_epochs * epochs_multiplier), tau = tau,
+                        dropout = dropout_rate)
+                validation_networks.append(network)
+            
 
             # We obtain the test RMSE and the test ll from the validation sets
 
-            error, MC_error, ll = network.predict(X_validation, y_validation)
+            error, MC_error, ll = _get_ensemble_prediction(validation_networks, X_validation, y_validation)
             if (ll > best_ll):
                 best_ll = ll
                 best_network = network
@@ -179,10 +215,14 @@ for split in range(n_splits):
                 myfile.write(repr(ll) + '\n')
 
     # Storing test results
-    best_network = net.net(X_train_original, y_train_original, ([ int(n_hidden) ] * num_hidden_layers),
-                normalize = True, n_epochs = int(n_epochs * epochs_multiplier), tau = best_tau,
-                dropout = best_dropout)
-    error, MC_error, ll = best_network.predict(X_test, y_test)
+    test_networks = []
+    for b in range(_NETS_IN_TEST_ENSEMBLE):
+        best_network = net.net(X_train_original, y_train_original, ([ int(n_hidden) ] * num_hidden_layers),
+                    normalize = True, n_epochs = int(n_epochs * epochs_multiplier), tau = best_tau,
+                    dropout = best_dropout)
+        test_networks.append(best_network)
+    error, MC_error, ll = _get_ensemble_prediction(test_networks,X_test, y_test)
+    
     with open(_RESULTS_TEST_RMSE, "a") as myfile:
         myfile.write(repr(error) + '\n')
 

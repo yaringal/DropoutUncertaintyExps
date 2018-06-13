@@ -11,9 +11,6 @@ import numpy as np
 from scipy import stats
 from sklearn.preprocessing import scale
 
-import pylab 
-# %matplotlib notebook
-
 import theano
 from keras import backend as K
 from keras.models import Sequential
@@ -82,12 +79,11 @@ class net:
         model = Sequential()
         model.add(Dropout(dropout, input_shape=(X_train.shape[1],)))
         model.add(Dense(n_hidden[0], activation='relu', W_regularizer=l2(reg)))
-        for i in xrange(len(n_hidden) - 1):
+        for i in range(len(n_hidden) - 1):
             model.add(Dropout(dropout))
             model.add(Dense(n_hidden[i+1], activation='relu', W_regularizer=l2(reg)))
         model.add(Dropout(dropout))
         model.add(Dense(y_train_normalized.shape[1], W_regularizer=l2(reg)))
-
         model.compile(loss='mean_squared_error', optimizer='adam')
 
         # We iterate the learning process
@@ -133,7 +129,7 @@ class net:
         T = 10000
         predict_stochastic = K.function([model.layers[0].input, K.learning_phase()], model.layers[-1].output)
 
-        Yt_hat = np.array([predict_stochastic([X_test, 1]) for _ in xrange(T)])
+        Yt_hat = np.array([predict_stochastic([X_test, 1]) for _ in range(T)])
         Yt_hat = Yt_hat * self.std_y_train + self.mean_y_train
         MC_pred = np.mean(Yt_hat, 0)
         rmse = np.mean((y_test.squeeze() - MC_pred.squeeze())**2.)**0.5
@@ -143,9 +139,9 @@ class net:
             - 0.5*np.log(2*np.pi) + 0.5*np.log(self.tau))
         test_ll = np.mean(ll)
         
-        print 'Standard rmse %f' % (rmse_standard_pred)
-        print 'MC rmse %f' % (rmse)
-        print 'test_ll %f' % (test_ll)
+        #print ('Standard rmse %f' % (rmse_standard_pred))
+        #print ('MC rmse %f' % (rmse))
+        #print ('test_ll %f' % (test_ll))
 
         # We are done!
         return rmse_standard_pred, rmse, test_ll
