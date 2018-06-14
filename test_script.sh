@@ -1,10 +1,10 @@
-#!/bin/sh
-if [ "$#" -ne 1 ]; then
-  echo "Need the name of the data directory as argument (Single argument only)"
-  exit 1
-fi
+#!/bin/bash
 
-echo "Chosen dataset: $1"
-python experiment.py --d $1 -e 10 -nh 1
-python experiment.py --d $1 -e 100 -nh 1
-python experiment.py --d $1 -e 500 -nh 2
+#python experiment.py --dir concrete -e 100 -nh 1
+#python experiment.py --dir energy -e 100 -nh 1
+#python experiment.py --dir kin8nm -e 100 -nh 1
+python experiment.py --dir power-plant -e 100 -nh 1
+python experiment.py --dir yacht -e 100 -nh 1
+python experiment.py --dir protein-tertiary-structure -e 100 -nh 1
+python experiment.py --dir naval-propulsion-plant -e 100 -nh 1
+python experiment.py --dir wine-quality-red -e 100 -nh 1

@@ -1,0 +1,1591 @@
+Removing existing result files...
+Result files removed.
+Loading data and other hyperparameters...
+Done.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_0.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_0.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.5168730024667996
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 3us/step
+Avg error: 2.7459528405385694
+Avg MC error: 2.6500915904972926
+Avg LL: -2.4249884285069006
+Tests on split 0 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_1.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_1.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.8607819938863637
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.794930443869847
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.772692857679688
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.655566918765762
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 5us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 3us/step
+Avg error: 3.089052112311056
+Avg MC error: 2.554256847121331
+Avg LL: -2.345749356613196
+Tests on split 1 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_2.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_2.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.4837496187645067
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.4796395715719934
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.428884817592774
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.3498767598835077
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.3231833635016796
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 3.127448831151033
+Avg MC error: 2.2802367534081704
+Avg LL: -2.2352087000464884
+Tests on split 2 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_3.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_3.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.4092546976949825
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.2845586618012055
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.2460057105135856
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.206112856090823
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 2.503030739212981
+Avg MC error: 2.301567595953588
+Avg LL: -2.2338415399060705
+Tests on split 3 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_4.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_4.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.436778604807094
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.313258194925624
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.294450630101587
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.2919205701383447
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.2605042190242024
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.1
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 5us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 4.832703913604231
+Avg MC error: 4.335028068780654
+Avg LL: -2.88382168419112
+Tests on split 4 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_5.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_5.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.681321306826752
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.6257785168871304
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.5911534248817443
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.5742791812646937
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.5570387690689382
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.537537386504413
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 2.6398391856934835
+Avg MC error: 2.020991956608666
+Avg LL: -2.2362338213383897
+Tests on split 5 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_6.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_6.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.6051193619813016
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.564856805684977
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.408250068486897
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.3975483194773455
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.395776710223249
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.1
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 5us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 2.6387920700133107
+Avg MC error: 1.8962047557456252
+Avg LL: -2.1618756702558923
+Tests on split 6 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_7.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_7.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.4588819078690243
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.4005845019731793
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.3558897409784927
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 3.414828012030095
+Avg MC error: 3.386652755373781
+Avg LL: -2.487870547429843
+Tests on split 7 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_8.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_8.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.433042666011782
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 4us/step
+Best log_likelihood changed to: -2.4123492393576886
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.410231118167948
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.3964776394079723
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.373511309048109
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.3703841436457984
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.3656966623980153
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.1
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 4.154635972054051
+Avg MC error: 3.391735235245167
+Avg LL: -2.586198176244036
+Tests on split 8 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_9.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_9.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.470048749467703
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.365791608231739
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.348681987864265
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 5.405132079125905
+Avg MC error: 5.1357950738790565
+Avg LL: -3.002874828731903
+Tests on split 9 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_10.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_10.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.3379769364342
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.333113364714391
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.30550311403463
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.2850296132601042
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.2313818276007304
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 5us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 4.087233540849754
+Avg MC error: 3.594727129923156
+Avg LL: -2.5962385559966066
+Tests on split 10 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_11.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_11.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.404458924026264
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.391474821257632
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.3541081551293788
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.2802069904973985
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.278270005147376
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.242005107112903
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 15us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 2.6043476760596276
+Avg MC error: 1.987404127567531
+Avg LL: -2.128921793082102
+Tests on split 11 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_12.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_12.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.6852770335663894
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.6657423868528727
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.64461187216107
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.6180729934610913
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 3.026979364642433
+Avg MC error: 2.3870894768787876
+Avg LL: -2.273376790259719
+Tests on split 12 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_13.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_13.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.577055609979206
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 4us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.5317368969288587
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.4866015999934628
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.379205490533225
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.361682816031855
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.1
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 4.254286212764954
+Avg MC error: 2.8161008782029175
+Avg LL: -2.3585351460345274
+Tests on split 13 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_14.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_14.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.562845931297018
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.5203431438697987
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.5084669684908336
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 2.830645594933187
+Avg MC error: 2.3459324983130174
+Avg LL: -2.259036182732136
+Tests on split 14 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_15.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_15.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.583322633935348
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.490762309278882
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.3896872605781088
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.3447261497495213
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 5us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 2.6409840627528784
+Avg MC error: 1.9915115858432482
+Avg LL: -2.237788231212653
+Tests on split 15 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_16.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_16.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.712304516468655
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.5644397546742934
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 4us/step
+Best log_likelihood changed to: -2.523574703766607
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.517350362509198
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.408705913352127
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 5us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 3.2253113651709215
+Avg MC error: 2.6862208956758815
+Avg LL: -2.367284570128917
+Tests on split 16 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_17.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_17.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.4195849437517296
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.4169644606064633
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.4108845999417614
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.4000106969900843
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.354362188475004
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 5us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 3.080698953011327
+Avg MC error: 2.6324330807280494
+Avg LL: -2.3015159296987022
+Tests on split 17 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_18.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_18.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.532815950393773
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.5151908156288134
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.4752121034911636
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.01
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.449018717930037
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.3612969728443987
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 5us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 3.1708325182294894
+Avg MC error: 2.734429339001852
+Avg LL: -2.4011300231996797
+Tests on split 18 complete.
+Loading file: ./UCI_Datasets/bostonHousing/data/index_train_19.txt
+Loading file: ./UCI_Datasets/bostonHousing/data/index_test_19.txt
+Number of training examples: 364
+Number of validation examples: 91
+Number of test examples: 51
+Number of train_original examples: 455
+Grid search step: Tau: 0.1 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.5275888016310275
+Best tau changed to: 0.1
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.15 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.446705111166794
+Best tau changed to: 0.15
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.2 Dropout rate: 0.005
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.3400710621532146
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.005
+Grid search step: Tau: 0.1 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.01
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.1 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 4us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.05
+
+91/91 [==============================] - 0s 3us/step
+Best log_likelihood changed to: -2.276848150653405
+Best tau changed to: 0.2
+Best dropout rate changed to: 0.05
+Grid search step: Tau: 0.1 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.15 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+Grid search step: Tau: 0.2 Dropout rate: 0.1
+
+91/91 [==============================] - 0s 3us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+
+51/51 [==============================] - 0s 4us/step
+Avg error: 3.9736656413790747
+Avg MC error: 3.346248150472511
+Avg LL: -2.4012343385107635
+Tests on split 19 complete.
