@@ -49,7 +49,7 @@ _INDEX_TARGET_FILE = _DATA_DIRECTORY_PATH + "index_target.txt"
 _N_SPLITS_FILE = _DATA_DIRECTORY_PATH + "n_splits.txt"
 
 _NETS_IN_TEST_ENSEMBLE = 10
-_NETS_IN_VALIDATION_ENSEMBLE = 5
+#_NETS_IN_VALIDATION_ENSEMBLE = 5
 
 def _get_index_train_test_path(split_num, train = True):
     """
@@ -181,17 +181,13 @@ for split in range(int(n_splits)):
     for dropout_rate in dropout_rates:
         for tau in tau_values:
             print ('Grid search step: Tau: ' + str(tau) + ' Dropout rate: ' + str(dropout_rate))
-            validation_networks = []
-            for b in range(_NETS_IN_VALIDATION_ENSEMBLE):
-                network = net.net(X_train, y_train, ([ int(n_hidden) ] * num_hidden_layers),
-                        normalize = True, n_epochs = int(n_epochs * epochs_multiplier), tau = tau,
-                        dropout = dropout_rate)
-                validation_networks.append(network)
-            
+            network = net.net(X_train, y_train, ([ int(n_hidden) ] * num_hidden_layers),
+                    normalize = True, n_epochs = int(n_epochs * epochs_multiplier), tau = tau,
+                    dropout = dropout_rate)
 
             # We obtain the test RMSE and the test ll from the validation sets
 
-            error, MC_error, ll = _get_ensemble_prediction(validation_networks, X_validation, y_validation)
+            error, MC_error, ll = network.predict(X_validation, y_validation)
             if (ll > best_ll):
                 best_ll = ll
                 best_network = network
