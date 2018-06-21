@@ -8,17 +8,12 @@ warnings.filterwarnings("ignore")
 import math
 from scipy.misc import logsumexp
 import numpy as np
-from scipy import stats
-from sklearn.preprocessing import scale
 
-import theano
-from keras import backend as K
-from keras.models import Sequential
-from keras.callbacks import Callback
-from keras.layers.core import Dense, Dropout, Activation
-from keras.optimizers import SGD
 from keras.regularizers import l2
-import keras.constraints as constraints
+from keras import Input
+from keras.layers import Dropout
+from keras.layers import Dense
+from keras import Model
 
 import time
 
@@ -76,14 +71,24 @@ class net:
         lengthscale = 1e-2
         reg = lengthscale**2 * (1 - dropout) / (2. * N * tau)
 
-        model = Sequential()
-        model.add(Dropout(dropout, input_shape=(X_train.shape[1],)))
-        model.add(Dense(n_hidden[0], activation='relu', W_regularizer=l2(reg)))
+        inputs = Input(shape=(X_train.shape[1],))
+        inter = Dropout(dropout)(inputs, training=True)
+        inter = Dense(n_hidden[0], activation='relu', W_regularizer=l2(reg))(inter)
         for i in range(len(n_hidden) - 1):
-            model.add(Dropout(dropout))
-            model.add(Dense(n_hidden[i+1], activation='relu', W_regularizer=l2(reg)))
-        model.add(Dropout(dropout))
-        model.add(Dense(y_train_normalized.shape[1], W_regularizer=l2(reg)))
+            inter = Dropout(dropout)(inter, training=True)
+            inter = Dense(n_hidden[i+1], activation='relu', W_regularizer=l2(reg))(inter)
+        inter = Dropout(dropout)(inter, training=True)
+        outputs = Dense(y_train_normalized.shape[1], W_regularizer=l2(reg))(inter)
+        model = Model(inputs, outputs)
+
+        #model = Sequential()
+        #model.add(Dropout(dropout, input_shape=(X_train.shape[1],)))
+        #odel.add(Dense(n_hidden[0], activation='relu', W_regularizer=l2(reg)))
+        #for i in range(len(n_hidden) - 1):
+        #    model.add(Dropout(dropout))
+        #    model.add(Dense(n_hidden[i+1], activation='relu', W_regularizer=l2(reg)))
+        #model.add(Dropout(dropout))
+        #model.add(Dense(y_train_normalized.shape[1], W_regularizer=l2(reg)))
         model.compile(loss='mean_squared_error', optimizer='adam')
 
         # We iterate the learning process
@@ -127,9 +132,8 @@ class net:
         rmse_standard_pred = np.mean((y_test.squeeze() - standard_pred.squeeze())**2.)**0.5
 
         T = 10000
-        predict_stochastic = K.function([model.layers[0].input, K.learning_phase()], model.layers[-1].output)
-
-        Yt_hat = np.array([predict_stochastic([X_test, 1]) for _ in range(T)])
+        
+        Yt_hat = np.array([model.predict(X_test, batch_size=500, verbose=0) for _ in range(T)])
         Yt_hat = Yt_hat * self.std_y_train + self.mean_y_train
         MC_pred = np.mean(Yt_hat, 0)
         rmse = np.mean((y_test.squeeze() - MC_pred.squeeze())**2.)**0.5
