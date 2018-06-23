@@ -185,7 +185,7 @@ for split in range(int(n_splits)):
                 
                 # We obtain the test RMSE and the test ll from the validation sets
                 grid_search_networks.append(network)
-            error, MC_error, ll = _get_ensemble_prediction(grid_search_networks, X_validation, y_validation)
+            error, MC_error, ll = _get_ensemble_prediction(grid_search_networks, X_validation, y_validation, verbose=False)
             if (ll > best_ll):
                 best_ll = ll
                 best_networks = grid_search_networks
