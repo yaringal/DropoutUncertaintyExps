@@ -4,6 +4,7 @@
 
 import math
 import numpy as np
+import random
 import argparse
 import sys
 
@@ -67,7 +68,7 @@ def _get_index_train_test_path(split_num, train = True):
         return _DATA_DIRECTORY_PATH + "index_test_" + str(split_num) + ".txt" 
 
 
-def _get_ensemble_prediction(best_networks, X_test, y_test):
+def _get_ensemble_prediction(best_networks, X_test, y_test, verbose=True):
     """
        Method to take a list of networks and compute their mean performance over a given
        test set.
@@ -76,6 +77,7 @@ def _get_ensemble_prediction(best_networks, X_test, y_test):
                               parameters.
        @param X_test          Features for the test set
        @param y_test          Targets for the test set
+       @param verbose         Decides whether to print the returned values
  
        @return error          Average standard RMSE over all trained networks
        @return mc_error       Average Monte-Carlo RMSE over all trained networks
@@ -93,11 +95,11 @@ def _get_ensemble_prediction(best_networks, X_test, y_test):
     res_error = sum(errors)/len(errors)
     res_mc_error = sum(mc_errors)/len(mc_errors)
     res_ll = sum(lls)/len(lls)
-    print ('Avg error: ' + str(res_error))
-    print ('Avg MC error: ' + str(res_mc_error))
-    print ('Avg LL: ' + str(res_ll))
+    if (verbose):
+        print ('Avg error: ' + str(res_error))
+        print ('Avg MC error: ' + str(res_mc_error))
+        print ('Avg LL: ' + str(res_ll))
     return res_error, res_mc_error, res_ll
-
 
 print ("Removing existing result files...")
 call(["rm", _RESULTS_VALIDATION_LL])
@@ -149,25 +151,14 @@ for split in range(int(n_splits)):
     index_train = np.loadtxt(_get_index_train_test_path(split, train=True))
     index_test = np.loadtxt(_get_index_train_test_path(split, train=False))
 
-    X_train = X[ [int(i) for i in index_train.tolist()] ]
-    y_train = y[ [int(i) for i in index_train.tolist()] ]
+    X_train_original = X[ [int(i) for i in index_train.tolist()] ]
+    y_train_original = y[ [int(i) for i in index_train.tolist()] ]
     
     X_test = X[ [int(i) for i in index_test.tolist()] ]
     y_test = y[ [int(i) for i in index_test.tolist()] ]
 
-    X_train_original = X_train
-    y_train_original = y_train
-    num_training_examples = int(0.8 * X_train.shape[0])
-    X_validation = X_train[num_training_examples:, :]
-    y_validation = y_train[num_training_examples:]
-    X_train = X_train[0:num_training_examples, :]
-    y_train = y_train[0:num_training_examples]
-    
-    # Printing the size of the training, validation and test sets
-    print ('Number of training examples: ' + str(X_train.shape[0]))
-    print ('Number of validation examples: ' + str(X_validation.shape[0]))
-    print ('Number of test examples: ' + str(X_test.shape[0]))
-    print ('Number of train_original examples: ' + str(X_train_original.shape[0]))
+    num_examples = X_train_original.shape[0]
+    num_validation_examples = int(0.2 * X_train_original.shape[0])
 
     # List of hyperparameters which we will try out using grid-search
     dropout_rates = np.loadtxt(_DROPOUT_RATES_FILE).tolist()
@@ -181,16 +172,23 @@ for split in range(int(n_splits)):
     for dropout_rate in dropout_rates:
         for tau in tau_values:
             print ('Grid search step: Tau: ' + str(tau) + ' Dropout rate: ' + str(dropout_rate))
-            network = net.net(X_train, y_train, ([ int(n_hidden) ] * num_hidden_layers),
-                    normalize = True, n_epochs = int(n_epochs * epochs_multiplier), tau = tau,
-                    dropout = dropout_rate)
-
-            # We obtain the test RMSE and the test ll from the validation sets
-
-            error, MC_error, ll = network.predict(X_validation, y_validation)
+            grid_search_networks = []
+            for _ in range(5):
+                val_idx = random.sample(range(num_examples), num_validation_examples)
+                X_validation = X_train_original[val_idx, :]
+                y_validation = y_train_original[val_idx]
+                X_train = np.delete(X_train_original, val_idx, axis=0)
+                y_train = np.delete(y_train_original, val_idx, axis=0)
+                network = net.net(X_train, y_train, ([ int(n_hidden) ] * num_hidden_layers),
+                        normalize = True, n_epochs = int(n_epochs * epochs_multiplier), tau = tau,
+                        dropout = dropout_rate)
+                
+                # We obtain the test RMSE and the test ll from the validation sets
+                grid_search_networks.append(network)
+            error, MC_error, ll = _get_ensemble_prediction(grid_search_networks, X_validation, y_validation)
             if (ll > best_ll):
                 best_ll = ll
-                best_network = network
+                best_networks = grid_search_networks
                 best_tau = tau
                 best_dropout = dropout_rate
                 print ('Best log_likelihood changed to: ' + str(best_ll))
