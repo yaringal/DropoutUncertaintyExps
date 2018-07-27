@@ -2,6 +2,15 @@
 # This code is based on the code by Jose Miguel Hernandez-Lobato used for his 
 # paper "Probabilistic Backpropagation for Scalable Learning of Bayesian Neural Networks".
 
+# This file contains code to train dropout networks on the UCI datasets using the following algorithm:
+# 1. Create 20 random splits of the training-test dataset.
+# 2. For each split:
+# 3.   Create a validation (val) set taking 20% of the training set.
+# 4.   Get best hyperparameters: dropout_rate and tau by training on (train-val) set and testing on val set.
+# 5.   Train a network on the entire training set with the best pair of hyperparameters.
+# 6.   Get the performance (MC RMSE and log-likelihood) on the test set.
+# 7. Report the averaged performance (Monte Carlo RMSE and log-likelihood) on all 20 splits.
+
 import math
 import numpy as np
 import argparse
