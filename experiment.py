@@ -7,8 +7,8 @@
 # 2. For each split:
 # 3.   Create a validation (val) set taking 20% of the training set.
 # 4.   Get best hyperparameters: dropout_rate and tau by training on (train-val) set and testing on val set.
-# 5.   Train an ensemble of 10 networks on the entire training set with the best pair of hyperparameters.
-# 6.   Average the performance of the 10 networks on the test set.
+# 5.   Train a network on the entire training set with the best pair of hyperparameters.
+# 6.   Get the performance (MC RMSE and log-likelihood) on the test set.
 # 7. Report the averaged performance (Monte Carlo RMSE and log-likelihood) on all 20 splits.
 
 import math
@@ -57,17 +57,15 @@ _INDEX_FEATURES_FILE = _DATA_DIRECTORY_PATH + "index_features.txt"
 _INDEX_TARGET_FILE = _DATA_DIRECTORY_PATH + "index_target.txt"
 _N_SPLITS_FILE = _DATA_DIRECTORY_PATH + "n_splits.txt"
 
-_NETS_IN_TEST_ENSEMBLE = 10
+_NETS_IN_TEST_ENSEMBLE = 1
 #_NETS_IN_VALIDATION_ENSEMBLE = 5
 
 def _get_index_train_test_path(split_num, train = True):
     """
        Method to generate the path containing the training/test split for the given
        split number (generally from 1 to 20).
-
        @param split_num      Split number for which the data has to be generated
        @param train          Is true if the data is training data. Else false.
-
        @return path          Path of the file containing the requried data
     """
     if train:
@@ -80,7 +78,6 @@ def _get_ensemble_prediction(best_networks, X_test, y_test):
     """
        Method to take a list of networks and compute their mean performance over a given
        test set.
-
        @param best_networks   List of networks trained on the same data with the same
                               parameters.
        @param X_test          Features for the test set
