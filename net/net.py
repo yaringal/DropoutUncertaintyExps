@@ -81,14 +81,6 @@ class net:
         outputs = Dense(y_train_normalized.shape[1], W_regularizer=l2(reg))(inter)
         model = Model(inputs, outputs)
 
-        #model = Sequential()
-        #model.add(Dropout(dropout, input_shape=(X_train.shape[1],)))
-        #odel.add(Dense(n_hidden[0], activation='relu', W_regularizer=l2(reg)))
-        #for i in range(len(n_hidden) - 1):
-        #    model.add(Dropout(dropout))
-        #    model.add(Dense(n_hidden[i+1], activation='relu', W_regularizer=l2(reg)))
-        #model.add(Dropout(dropout))
-        #model.add(Dense(y_train_normalized.shape[1], W_regularizer=l2(reg)))
         model.compile(loss='mean_squared_error', optimizer='adam')
 
         # We iterate the learning process
@@ -142,10 +134,6 @@ class net:
         ll = (logsumexp(-0.5 * self.tau * (y_test[None] - Yt_hat)**2., 0) - np.log(T) 
             - 0.5*np.log(2*np.pi) + 0.5*np.log(self.tau))
         test_ll = np.mean(ll)
-        
-        #print ('Standard rmse %f' % (rmse_standard_pred))
-        #print ('MC rmse %f' % (rmse))
-        #print ('test_ll %f' % (test_ll))
 
         # We are done!
         return rmse_standard_pred, rmse, test_ll
