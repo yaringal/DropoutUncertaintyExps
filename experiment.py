@@ -57,9 +57,6 @@ _INDEX_FEATURES_FILE = _DATA_DIRECTORY_PATH + "index_features.txt"
 _INDEX_TARGET_FILE = _DATA_DIRECTORY_PATH + "index_target.txt"
 _N_SPLITS_FILE = _DATA_DIRECTORY_PATH + "n_splits.txt"
 
-_NETS_IN_TEST_ENSEMBLE = 1
-#_NETS_IN_VALIDATION_ENSEMBLE = 5
-
 def _get_index_train_test_path(split_num, train = True):
     """
        Method to generate the path containing the training/test split for the given
@@ -72,37 +69,6 @@ def _get_index_train_test_path(split_num, train = True):
         return _DATA_DIRECTORY_PATH + "index_train_" + str(split_num) + ".txt"
     else:
         return _DATA_DIRECTORY_PATH + "index_test_" + str(split_num) + ".txt" 
-
-
-def _get_ensemble_prediction(best_networks, X_test, y_test):
-    """
-       Method to take a list of networks and compute their mean performance over a given
-       test set.
-       @param best_networks   List of networks trained on the same data with the same
-                              parameters.
-       @param X_test          Features for the test set
-       @param y_test          Targets for the test set
- 
-       @return error          Average standard RMSE over all trained networks
-       @return mc_error       Average Monte-Carlo RMSE over all trained networks
-       @return ll             Average log likelihood over all trained networks
-    """
-
-    errors, mc_errors, lls = [], [], []
-    
-    for network in best_networks:
-        error, mc_error, ll = network.predict(X_test, y_test)
-        errors.append(error)
-        mc_errors.append(mc_error)
-        lls.append(ll)
-    
-    res_error = sum(errors)/len(errors)
-    res_mc_error = sum(mc_errors)/len(mc_errors)
-    res_ll = sum(lls)/len(lls)
-    print ('Avg error: ' + str(res_error))
-    print ('Avg MC error: ' + str(res_mc_error))
-    print ('Avg LL: ' + str(res_ll))
-    return res_error, res_mc_error, res_ll
 
 
 print ("Removing existing result files...")
@@ -217,13 +183,10 @@ for split in range(int(n_splits)):
                 myfile.write(repr(ll) + '\n')
 
     # Storing test results
-    test_networks = []
-    for b in range(_NETS_IN_TEST_ENSEMBLE):
-        best_network = net.net(X_train_original, y_train_original, ([ int(n_hidden) ] * num_hidden_layers),
+    best_network = net.net(X_train_original, y_train_original, ([ int(n_hidden) ] * num_hidden_layers),
                     normalize = True, n_epochs = int(n_epochs * epochs_multiplier), tau = best_tau,
                     dropout = best_dropout)
-        test_networks.append(best_network)
-    error, MC_error, ll = _get_ensemble_prediction(test_networks,X_test, y_test)
+    error, MC_error, ll = best_network.predict(X_test, y_test)
     
     with open(_RESULTS_TEST_RMSE, "a") as myfile:
         myfile.write(repr(error) + '\n')
