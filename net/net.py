@@ -6,7 +6,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 import math
-from scipy.misc import logsumexp
+from scipy.special import logsumexp
 import numpy as np
 
 from keras.regularizers import l2
