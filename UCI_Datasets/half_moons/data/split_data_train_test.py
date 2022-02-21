@@ -26,7 +26,7 @@ for i in range(n_splits):
     np.savetxt("index_train_{}.txt".format(i), index_train, fmt = '%d')
     np.savetxt("index_test_{}.txt".format(i), index_test, fmt = '%d')
 
-    print i
+    print(i)
 
 np.savetxt("n_splits.txt", np.array([ n_splits ]), fmt = '%d')
 
