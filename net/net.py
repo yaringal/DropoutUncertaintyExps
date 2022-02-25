@@ -13,7 +13,9 @@ from keras.regularizers import l2
 from keras import Input
 from keras.layers import Dropout
 from keras.layers import Dense
+from keras.layers import Softmax
 from keras import Model
+import tensorflow as tf
 
 import time
 
@@ -78,11 +80,12 @@ class net:
             inter = Dropout(dropout)(inter, training=True)
             inter = Dense(n_hidden[i+1], activation='relu', kernel_regularizer=l2(reg))(inter)
         inter = Dropout(dropout)(inter, training=True)
-        outputs = Dense(y_train_normalized.shape[1], kernel_regularizer=l2(reg))(inter)
+        outputs = Dense(2, kernel_regularizer=l2(reg))(inter)
+        outputs = Softmax()(outputs)
         model = Model(inputs, outputs)
 
-        model.compile(loss='mean_squared_error', optimizer='adam')
-
+        model.compile(loss='binary_crossentropy', optimizer='adam')
+        # print(model.summary())
         # We iterate the learning process
         start_time = time.time()
         model.fit(X_train, y_train_normalized, batch_size=batch_size, epochs=n_epochs, verbose=0)
@@ -119,21 +122,33 @@ class net:
         # of the test data
 
         model = self.model
-        standard_pred = model.predict(X_test, batch_size=500, verbose=1)
-        standard_pred = standard_pred * self.std_y_train + self.mean_y_train
-        rmse_standard_pred = np.mean((y_test.squeeze() - standard_pred.squeeze())**2.)**0.5
+        standard_pred_probs = model.predict(X_test, batch_size=500, verbose=1)
+        standard_pred = tf.math.argmax(standard_pred_probs, axis=1).numpy()
+        # standard_pred = standard_pred * self.std_y_train + self.mean_y_train
+        # rmse_standard_pred = np.mean((y_test.squeeze() - standard_pred.squeeze())**2.)**0.5
+        accuracy_standard_pred = np.mean((y_test.squeeze() == standard_pred.squeeze()))
+        print(f'Standard Accuracy: {accuracy_standard_pred}')
 
-        T = 10000
+        T = 100
         
         Yt_hat = np.array([model.predict(X_test, batch_size=500, verbose=0) for _ in range(T)])
-        Yt_hat = Yt_hat * self.std_y_train + self.mean_y_train
-        MC_pred = np.mean(Yt_hat, 0)
-        rmse = np.mean((y_test.squeeze() - MC_pred.squeeze())**2.)**0.5
+        # Yt_hat = Yt_hat * self.std_y_train + self.mean_y_train
+        MC_pred = tf.math.argmax(np.mean(Yt_hat, axis=0), axis=1).numpy()
+        # print(MC_pred.shape)
+        mc_accuracy = np.mean((y_test.squeeze() == MC_pred.squeeze()))
+        print(f'MC Accuracy: {mc_accuracy}')
 
         # We compute the test log-likelihood
-        ll = (logsumexp(-0.5 * self.tau * (y_test[None] - Yt_hat)**2., 0) - np.log(T) 
-            - 0.5*np.log(2*np.pi) + 0.5*np.log(self.tau))
-        test_ll = np.mean(ll)
+        # ll = (logsumexp(-0.5 * self.tau * (y_test[None] - Yt_hat)**2., 0) - np.log(T) 
+        #     - 0.5*np.log(2*np.pi) + 0.5*np.log(self.tau))
+        # test_ll = np.mean(ll)
+        # ll = np.sum(y_test[])
+        
+        # double check this!
+        y_test = y_test.astype(int)
+        y_test_2d = np.hstack((y_test, 1-y_test))
+        test_ll = np.mean(np.log(standard_pred_probs) * y_test_2d)
 
         # We are done!
-        return rmse_standard_pred, rmse, test_ll
+        print(f'Test LL: {test_ll}')
+        return accuracy_standard_pred, mc_accuracy, test_ll
