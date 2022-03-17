@@ -112,8 +112,13 @@ y = data[ : , int(index_target.tolist()) ]
 n_splits = np.loadtxt(_N_SPLITS_FILE)
 print ("Done.")
 
-errors, MC_errors, lls = [], [], []
-for split in range(int(n_splits)):
+print(f"Parameters: {epochs_multiplier} {num_hidden_layers}")
+
+accuracies, MC_accuracies, lls = [], [], []
+# int(n_splits)
+for split in range(2):
+
+    print(f"Split: {split}")
 
     # We load the indexes of the training and test sets
     print ('Loading file: ' + _get_index_train_test_path(split, train=True))
@@ -156,10 +161,12 @@ for split in range(int(n_splits)):
             network = net.net(X_train, y_train, ([ int(n_hidden) ] * num_hidden_layers),
                     normalize = True, n_epochs = int(n_epochs * epochs_multiplier), tau = tau,
                     dropout = dropout_rate)
+            print('DONE TRAINING')
 
             # We obtain the test RMSE and the test ll from the validation sets
 
             error, MC_error, ll = network.predict(X_validation, y_validation)
+            print('DONE PREDICTING')
             if (ll > best_ll):
                 best_ll = ll
                 best_network = network
@@ -186,13 +193,14 @@ for split in range(int(n_splits)):
     best_network = net.net(X_train_original, y_train_original, ([ int(n_hidden) ] * num_hidden_layers),
                     normalize = True, n_epochs = int(n_epochs * epochs_multiplier), tau = best_tau,
                     dropout = best_dropout)
-    error, MC_error, ll = best_network.predict(X_test, y_test)
+    accuracy, MC_accuracy, ll = best_network.predict(X_test, y_test)
+    print("DONE WITH BEST NETWORK")
     
     with open(_RESULTS_TEST_RMSE, "a") as myfile:
-        myfile.write(repr(error) + '\n')
+        myfile.write(repr(accuracy) + '\n')
 
     with open(_RESULTS_TEST_MC_RMSE, "a") as myfile:
-        myfile.write(repr(MC_error) + '\n')
+        myfile.write(repr(MC_accuracy) + '\n')
 
     with open(_RESULTS_TEST_LL, "a") as myfile:
         myfile.write(repr(ll) + '\n')
@@ -201,17 +209,17 @@ for split in range(int(n_splits)):
         myfile.write(repr(best_network.tau) + '\n')
 
     print ("Tests on split " + str(split) + " complete.")
-    errors += [error]
-    MC_errors += [MC_error]
+    accuracies += [accuracy]
+    MC_accuracies += [MC_accuracy]
     lls += [ll]
 
 with open(_RESULTS_TEST_LOG, "a") as myfile:
-    myfile.write('errors %f +- %f (stddev) +- %f (std error), median %f 25p %f 75p %f \n' % (
-        np.mean(errors), np.std(errors), np.std(errors)/math.sqrt(n_splits),
-        np.percentile(errors, 50), np.percentile(errors, 25), np.percentile(errors, 75)))
-    myfile.write('MC errors %f +- %f (stddev) +- %f (std error), median %f 25p %f 75p %f \n' % (
-        np.mean(MC_errors), np.std(MC_errors), np.std(MC_errors)/math.sqrt(n_splits),
-        np.percentile(MC_errors, 50), np.percentile(MC_errors, 25), np.percentile(MC_errors, 75)))
+    myfile.write('accuracies %f +- %f (stddev) +- %f (std error), median %f 25p %f 75p %f \n' % (
+        np.mean(accuracies), np.std(accuracies), np.std(accuracies)/math.sqrt(n_splits),
+        np.percentile(accuracies, 50), np.percentile(accuracies, 25), np.percentile(accuracies, 75)))
+    myfile.write('MC accuracies %f +- %f (stddev) +- %f (std error), median %f 25p %f 75p %f \n' % (
+        np.mean(MC_accuracies), np.std(MC_accuracies), np.std(MC_accuracies)/math.sqrt(n_splits),
+        np.percentile(MC_accuracies, 50), np.percentile(MC_accuracies, 25), np.percentile(MC_accuracies, 75)))
     myfile.write('lls %f +- %f (stddev) +- %f (std error), median %f 25p %f 75p %f \n' % (
         np.mean(lls), np.std(lls), np.std(lls)/math.sqrt(n_splits), 
         np.percentile(lls, 50), np.percentile(lls, 25), np.percentile(lls, 75)))

@@ -1,0 +1,3 @@
+accuracies 0.501000 +- 0.067963 (stddev) +- 0.015197 (std error), median 0.485000 25p 0.460000 75p 0.537500 
+MC accuracies 0.503500 +- 0.104989 (stddev) +- 0.023476 (std error), median 0.505000 25p 0.420000 75p 0.590000 
+lls -0.346656 +- 0.000387 (stddev) +- 0.000087 (std error), median -0.346576 25p -0.346748 75p -0.346436 
